@@ -30,7 +30,7 @@ export const App: React.FC<AppProps> = ({
     }
 
     return peopleFromServer.filter(person =>
-      person.name.toLowerCase().includes(appliedQuery.toLowerCase()),
+      person.name.toLowerCase().includes(appliedQuery.trim().toLowerCase()),
     );
   }, [appliedQuery]);
 
@@ -105,7 +105,7 @@ export const App: React.FC<AppProps> = ({
                 {filteredPeople.length > 0 ? (
                   filteredPeople.map(person => (
                     <div
-                      key={person.name}
+                      key={person.slug}
                       className="dropdown-item"
                       data-cy="suggestion-item"
                       onClick={() => handleSuggestionClick(person)}
